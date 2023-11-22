@@ -1,0 +1,32 @@
+<div class="container">
+    <form class="form class= mat-elevation-z8 ">
+        <h1>Deletando Médico</h1>
+        <mat-form-field class="full-width">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="medico.nome" name="nome" disabled maxlength="60" matInput placeholder="Digite aqui ...">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>CRM</mat-label>
+            <input [(ngModel)]="medico.crm" name="crm" disabled maxlength="6" matInput placeholder="Ex. 000000 (apenas os números)">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>CPF</mat-label>
+            <input [(ngModel)]="medico.cpf" name="cpf" disabled maxlength="15" matInput placeholder="Ex. 000.000.000-00">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Data de Nascimento</mat-label>
+            <input [(ngModel)]="medico.dataNascimento" name="dataNascimento" disabled maxlength="10" matInput placeholder="Apenas os números">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Celular/Telefone</mat-label>
+            <input [(ngModel)]="medico.telefone" name="telefone" disabled maxlength="18" matInput placeholder="Ex. (00) 90000-0000">
+        </mat-form-field>
+
+        <button type="button" class="mat-elevation-z8" (click)="delete()" mat-stroked-button color="basic">DELETAR</button>
+        <button type="button" class="mat-elevation-z8" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </form>
+</div>

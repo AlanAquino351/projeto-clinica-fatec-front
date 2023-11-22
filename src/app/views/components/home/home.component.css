@@ -1,0 +1,35 @@
+.container {
+    padding-top: 2rem;
+}
+
+mat-card {
+    width: 80%;
+    height: 50%;
+    margin: 1rem auto 0 auto;
+}
+
+mat-card-subtitle {
+    font-size: 28px;
+}
+
+mat-card-title {
+    margin-top: 1rem;
+}
+
+.mat-card-title {
+    margin-bottom: 30px;
+    font-size: 40px;
+}
+
+.mat-card-subtitle {
+    font-size: 23px;
+}
+
+li, p {
+    font-size: 18px;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-size: 20;
+}

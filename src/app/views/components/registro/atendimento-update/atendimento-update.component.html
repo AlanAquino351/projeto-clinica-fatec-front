@@ -1,0 +1,43 @@
+<div class="container">
+    <form class="form class= mat-elevation-z8 ">
+      <h1>Atualizando Atendimento</h1>
+
+      <mat-form-field class="full-width">
+        <mat-label>Médico</mat-label>
+        <input type="text" [value]="atendimento.medico.nome" maxlength="60" matInput readonly>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Paciente</mat-label>
+        <mat-select [(ngModel)]="atendimento.paciente" [formControl]="paciente" required name="paciente" placeholder="Selecione um paciente">
+          <mat-option *ngFor="let paciente of pacientes" [value]="paciente">
+            {{ paciente.nome }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="paciente.invalid">{{ errorValidPaciente() }}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <mat-label>Exames</mat-label>
+        <mat-select [(ngModel)]="atendimento.exames" [formControl]="listExames" multiple>
+          <mat-option *ngFor="let exame of exames" [value]="exame">{{ exame.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <mat-label>Medicamentos</mat-label>
+        <mat-select [(ngModel)]="atendimento.medicamentos" [formControl]="listMedicamentos" multiple>
+          <mat-option *ngFor="let medicamento of medicamentos" [value]="medicamento">{{ medicamento.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Receituário</mat-label>
+        <textarea matInput [(ngModel)]="atendimento.receituario" [formControl]="receituario" required name="receituario" maxlength="255" placeholder="Receituário"></textarea>
+        <mat-error *ngIf="receituario.invalid">{{ errorValidReceituario() }}</mat-error>
+      </mat-form-field>
+  
+      <button type="button" (click)="updateAtendimento()" mat-stroked-button [disabled]="errorValidPaciente() || errorValidReceituario()" color="basic">ATUALIZAR</button>
+      <button type="button" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </form>
+  </div>

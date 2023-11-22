@@ -1,0 +1,33 @@
+<div class="container">
+    <form class="form class= mat-elevation-z8 ">
+      <h1>Deletando Atendimento</h1>
+
+      <mat-form-field class="full-width">
+        <mat-label>Médico</mat-label>
+        <input type="text" [value]="atendimento.medico.nome" maxlength="60" matInput disabled>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Paciente</mat-label>
+        <input type="text" [value]="atendimento.paciente.nome" maxlength="60" matInput disabled>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Exames</mat-label>
+        <input type="text" [value]="listExames" maxlength="60" matInput disabled>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <mat-label>Medicamentos</mat-label>
+        <input type="text" [value]="listMedicamentos" maxlength="60" matInput disabled>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <mat-label>Receituário</mat-label>
+        <textarea matInput [(ngModel)]="atendimento.receituario" required name="receituario" maxlength="255" placeholder="Receituário" disabled></textarea>
+      </mat-form-field>
+  
+      <button type="button" (click)="delete()" mat-stroked-button color="basic">DELETAR</button>
+      <button type="button" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </form>
+  </div>

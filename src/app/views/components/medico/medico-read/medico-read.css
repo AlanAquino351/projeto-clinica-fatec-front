@@ -1,0 +1,81 @@
+.body {
+    padding-top: 3rem;
+    padding-bottom: 7rem;
+}
+
+table {
+    width: 100%;
+}
+
+mat-paginator {
+    border-radius: 0 0 2rem 2rem;
+}
+
+.container {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.create {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 2rem;
+    position: flex;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: black;
+}
+
+.create .button {
+    text-align: center;
+    justify-content: center;
+    margin: -3rem auto 4rem 0;
+    background-color: #1E4D85 !important;
+    color: white;
+    background-color: white;
+    float: right;
+    margin-right: 1.5rem;
+}
+
+.create button:hover {
+    color: black;
+    border-color: #1E4D85;
+    background-color: white !important;
+    box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+#edit {
+    color: #1A936F;
+    margin-right: 0.8rem;
+    font-size: 2rem;
+}
+
+#delete {
+    color: red;
+    font-size: 2rem;
+}
+
+th {
+    font-size: 1.2em !important;
+    color: black;
+}
+
+table {
+    text-align: center !important;
+}
+
+th.mat-header-cell {
+    text-align: center;
+}
+
+.mat-cell,
+.mat-footer-cell {
+    font-size: 16px;
+}

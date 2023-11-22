@@ -1,0 +1,57 @@
+.header {
+    height: 10%;
+    display: flex;
+    background-color: #76d1c8;
+}
+
+.header .logo {
+    display: flex;
+    width: 40%;
+    padding: 3% 3% 3% 1%;
+    float: left;
+}
+
+.header .logo img {
+    width: 10%;
+    height: 30%;
+}
+
+.header .menu {
+    display: flex;
+    width: 60%;
+}
+
+.navigation ul li {
+    list-style: none;
+}
+
+.navigation ul li a {
+    display: flex;
+}
+
+.navigation ul li a .icon {
+    text-align: center;
+    line-height: 70px;
+    margin-right: 0.2rem;
+}
+
+.navigation ul li a .icon mat-icon {
+    font-size: 1.5rem;
+}
+
+.navigation ul li a .list {
+    padding-left: 10px;
+    line-height: 60px;
+}
+
+.header .menu a {
+    margin-right: 1rem;
+    color: #202020 !important;
+    text-decoration: none !important;
+    font-size: 1.4rem;
+    float: left;
+}
+
+.header .menu a:hover {
+    color: #ffffff !important;
+}

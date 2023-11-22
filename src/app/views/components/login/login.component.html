@@ -1,0 +1,22 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Icone -->
+    <div class="fadeIn first">
+      <br><br>
+      <img src="../../../../assets/img/logo.png" style="max-width: 100px;" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Campos Usuário e Senha  -->
+    <form>
+      <input type="text" [(ngModel)]="user.login" id="login" class="fadeIn second" name="login" placeholder="usuário">
+      <input [(ngModel)]="user.password" type="password" id="password" class="fadeIn third" name="login" placeholder="senha">
+      <input type="submit" href="estoque" class="fadeIn fourth" value="Entrar" (click)="logar()">
+    </form>
+
+    <!-- Rodapé -->
+    <div id="formFooter">
+    </div>
+
+  </div>
+</div>

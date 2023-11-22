@@ -1,0 +1,73 @@
+<div class="body">
+  <div class="mat-elevation-z8 container">
+    <div class="create">
+      <h1>Atendimento</h1>
+      <button class="button" (click)="navigateToCreate()" mat-stroked-button color="primary">REGISTRAR NOVO
+        ATENDIMENTO</button>
+    </div>
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element" style="width: 20px;"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="medico">
+        <th mat-header-cell *matHeaderCellDef> Médico </th>
+        <td mat-cell *matCellDef="let element" style="width: 100px;"> {{element.medico.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paciente">
+        <th mat-header-cell *matHeaderCellDef> Paciente </th>
+        <td mat-cell *matCellDef="let element" style="width: 100px;"> {{element.paciente.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="receituario">
+        <th mat-header-cell *matHeaderCellDef> Receituário </th>
+        <td mat-cell *matCellDef="let element" style="width: 150px;"> {{element.receituario}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exames">
+        <th mat-header-cell *matHeaderCellDef> Exames </th>
+        <td mat-cell *matCellDef="let element" style="width: 150px;">
+          <span *ngFor="let exame of element.exames; let i = index">
+            {{exame.nome}}{{i !== element.exames.length - 1 ? ', ' : ''}}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="medicamentos">
+        <th mat-header-cell *matHeaderCellDef> Medicamentos </th>
+        <td mat-cell *matCellDef="let element" style="width: 150px;">
+          <span *ngFor="let medicamento of element.medicamentos; let i = index">
+            {{medicamento.nome}}{{i !== element.medicamentos.length - 1 ? ', ' : ''}}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataAtendimento">
+        <th mat-header-cell *matHeaderCellDef>Data de Atendimento</th>
+        <td mat-cell *matCellDef="let element" style="width: 50px;">{{ element.dataAtendimento | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Editar / Excluir </th>
+        <td mat-cell *matCellDef="let element" style="width: 50px;">
+            <a routerLink="update/{{ element.id }}">
+                <i id="edit" class="material-icons">edit_note</i>
+            </a>
+
+            <a routerLink="delete/{{ element.id }}">
+                <i id="delete" class="material-icons">delete_forever</i>
+            </a>
+        </td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons aria-label="Select page of atendimentos">
+    </mat-paginator>
+  </div>
+</div>

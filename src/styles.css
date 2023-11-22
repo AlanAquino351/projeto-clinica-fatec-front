@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error-snack {
+    background-color: #ff2600; /* Cor de fundo vermelha para erro */
+    color: #fff; /* Cor do texto branca */
+}
+
+.success-snack {
+    background-color: #00ae06; /* Cor de fundo verde para sucesso */
+    color: #fff; /* Cor do texto branca */
+}
+
+.mat-snack-bar-container .mat-simple-snackbar-action button {
+    color: #fff; /* Cor do texto branca */
+  }

@@ -1,0 +1,37 @@
+<div class="container">
+    <form class="form class= mat-elevation-z8 ">
+        <h1>Atualizando Médico</h1>
+        <mat-form-field class="full-width">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="medico.nome" [formControl]="nome" required name="nome" maxlength="60" matInput placeholder="Digite aqui ...">
+            <mat-error *ngIf="nome.invalid">{{ errorValidNome() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>CRM</mat-label>
+            <input [(ngModel)]="medico.crm" mask="000000" [dropSpecialCharacters]=" false " name="crm" [formControl]="crm" required maxlength="6" matInput placeholder="Ex. 000000 (apenas os números)">
+            <mat-error *ngIf="crm.invalid">{{ errorValidCrm() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>CPF</mat-label>
+            <input [(ngModel)]="medico.cpf" mask="000.000.000-00" [dropSpecialCharacters]=" false " name="cpf" [formControl]="cpf" required maxlength="14" matInput placeholder="Ex. 000.000.000-00 (apenas os números)">
+            <mat-error *ngIf="cpf.invalid">{{ errorValidCpf() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Data de Nascimento</mat-label>
+            <input type="text" [(ngModel)]="medico.dataNascimento" mask="d0/M0/0000" [dropSpecialCharacters]=" false " name="dataNascimento" [formControl]="dataNascimento" required maxlength="10" matInput placeholder="Ex. 00/00/0000 (apenas os números)">
+            <mat-error *ngIf="dataNascimento.invalid">{{ errorValidDataNascimento() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Celular/Telefone</mat-label>
+            <input type="text" [(ngModel)]="medico.telefone" mask="(00) 0000-0000||(00) 0 0000-0000" [dropSpecialCharacters]=" false " name="telefone" [formControl]="telefone" required maxlength="18" matInput placeholder="Ex. (00) 90000-0000 (apenas os números)">
+            <mat-error *ngIf="telefone.invalid">{{ errorValidTelefone() }}</mat-error>
+        </mat-form-field>
+
+        <button type="button" class="mat-elevation-z8" (click)="update()" [disabled]="errorValidNome() || errorValidCrm() || errorValidDataNascimento() || errorValidTelefone()" mat-stroked-button color="basic">ATUALIZAR</button>
+        <button type="button" class="mat-elevation-z8" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </form>
+</div>
