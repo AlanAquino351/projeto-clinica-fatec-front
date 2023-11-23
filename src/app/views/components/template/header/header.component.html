@@ -10,11 +10,11 @@
                         <span class="icon"><mat-icon>home</mat-icon></span>
                         <span class="list">Home</span>
                     </a>
-                    <a routerLink="/pacientes">
+                    <a *ngIf="isAdmin()" routerLink="/pacientes">
                         <span class="icon"><mat-icon>person</mat-icon></span>
                         <span class="list">Paciente</span>
                     </a>
-                    <a routerLink="/medicos">
+                    <a *ngIf="isAdmin()" routerLink="/medicos">
                         <span class="icon"><mat-icon> medication</mat-icon></span>
                         <span class="list">Médico</span>
                     </a>
