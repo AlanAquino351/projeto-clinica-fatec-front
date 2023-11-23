@@ -31,14 +31,28 @@ import { AuthService } from "../../login/login.service";
     }
   
     findAllByMedico(): void {
-      this.atendimentoService.findAllByMedico(this.authService.medicoLogado?.crm).subscribe((response) => {
-        this.atendimentos = response;
-        this.dataSource = new MatTableDataSource<Atendimento>(this.atendimentos);
-        this.dataSource.paginator = this.paginator;
-      });
+      if (this.authService.isAdmin) {
+        this.atendimentoService.findAll().subscribe((response) => {
+          this.atendimentos = response;
+          this.dataSource = new MatTableDataSource<Atendimento>(this.atendimentos);
+          this.dataSource.paginator = this.paginator;
+        });
+      } else {
+        this.atendimentoService.findAllByMedico(this.authService.medicoLogado?.crm).subscribe((response) => {
+          this.atendimentos = response;
+          this.dataSource = new MatTableDataSource<Atendimento>(this.atendimentos);
+          this.dataSource.paginator = this.paginator;
+        });
+      }
     }
   
     navigateToCreate(): void {
-      this.router.navigate(['atendimentos/create']);
+      if(!this.authService.isAdmin) {
+        this.router.navigate(['atendimentos/create']);
+      }
+    }
+
+    isAdmin():boolean {
+      return this.authService.isAdmin;
     }
   }

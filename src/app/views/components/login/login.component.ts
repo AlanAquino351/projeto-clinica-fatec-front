@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
     password: '',
   }
 
-  constructor(private mensagem: MensagemService, private authService: AuthService, 
-    private router : Router, private medicoService : MedicoService) { }
+  constructor(private mensagem: MensagemService, private authService: AuthService,
+    private router: Router, private medicoService: MedicoService) { }
 
   ngOnInit(): void {
 
@@ -28,20 +28,26 @@ export class LoginComponent implements OnInit {
     if (this.isBlankOrNull(this.user.login) || this.isBlankOrNull(this.user.password)) {
       this.mensagem.error("Usuário e Senha obrigatórios!");
     } else {
-      this.medicoService.findUsuarioMedicoByCrm(this.user.login).subscribe((resposta) => {
-        if (resposta != null && this.user.password == '1234') {
-          this.mensagem.success("Acesso Autorizado com sucesso!");
-          this.authService.login(resposta);
-        } else {
+
+      if (this.user.password == 'admin' && this.user.login === 'admin') {
+        this.mensagem.success("Acesso Autorizado com sucesso!");
+        this.authService.loginAdmin();
+      } else {
+        this.medicoService.findUsuarioMedicoByCrm(this.user.login).subscribe((resposta) => {
+          if (resposta != null && this.user.password == '1234') {
+            this.mensagem.success("Acesso Autorizado com sucesso!");
+            this.authService.login(resposta);
+          } else {
+            this.mensagem.error("Usuário não existe!");
+          }
+        }, err => {
           this.mensagem.error("Usuário não existe!");
-        }
-      }, err => {
-        this.mensagem.error("Usuário não existe!");
-      })
+        })
+      }
     }
   }
 
-  private isBlankOrNull(value: String):boolean {
+  private isBlankOrNull(value: String): boolean {
     return value == null || value.trim() == '';
   }
 }

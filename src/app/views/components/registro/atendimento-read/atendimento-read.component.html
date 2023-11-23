@@ -2,8 +2,10 @@
   <div class="mat-elevation-z8 container">
     <div class="create">
       <h1>Atendimento</h1>
-      <button class="button" (click)="navigateToCreate()" mat-stroked-button color="primary">REGISTRAR NOVO
-        ATENDIMENTO</button>
+      <div *ngIf="!isAdmin()">
+        <button  class="button" [disabled]="isAdmin()" (click)="navigateToCreate()" mat-stroked-button color="primary">REGISTRAR NOVO
+          ATENDIMENTO</button>
+      </div>
     </div>
     <table mat-table [dataSource]="dataSource">
 
@@ -53,13 +55,20 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Editar / Excluir </th>
         <td mat-cell *matCellDef="let element" style="width: 50px;">
-            <a routerLink="update/{{ element.id }}">
+          <ng-container *ngIf="!isAdmin()">
+            <a [routerLink]="'update/' + element.id">
                 <i id="edit" class="material-icons">edit_note</i>
             </a>
 
-            <a routerLink="delete/{{ element.id }}">
+            <a [routerLink]="'delete/' + element.id">
                 <i id="delete" class="material-icons">delete_forever</i>
             </a>
+        </ng-container>
+
+        <ng-template *ngIf="isAdmin()">
+          <span></span>
+      </ng-template>
+            
         </td>
     </ng-container>
 

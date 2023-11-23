@@ -12,19 +12,24 @@ export class AtendimentoService {
   baseUrl: String = environment.baseUrl;
 
   constructor(
-    private http : HttpClient) { }
+    private http: HttpClient) { }
 
-    findAllByMedico(crm: any):Observable<Atendimento[]> {
-      const url = `${this.baseUrl}/atendimento/crm/${crm}`;
+  findAll(): Observable<Atendimento[]> {
+    const url = this.baseUrl + "/atendimento";
     return this.http.get<Atendimento[]>(url);
   }
 
-  findById(id : any): Observable<Atendimento>{
+  findAllByMedico(crm: any): Observable<Atendimento[]> {
+    const url = `${this.baseUrl}/atendimento/crm/${crm}`;
+    return this.http.get<Atendimento[]>(url);
+  }
+
+  findById(id: any): Observable<Atendimento> {
     const url = `${this.baseUrl}/atendimento/${id}`;
     return this.http.get<Atendimento>(url);
   }
 
-  create(atendimento: Atendimento):Observable<Atendimento> {
+  create(atendimento: Atendimento): Observable<Atendimento> {
     const url = this.baseUrl + "/atendimento";
     return this.http.post<Atendimento>(url, atendimento);
   }
@@ -34,7 +39,7 @@ export class AtendimentoService {
     return this.http.put<Atendimento>(url, atendimento);
   }
 
-  delete(id : any):Observable<void> {
+  delete(id: any): Observable<void> {
     const url = `${this.baseUrl}/atendimento/${id}`;
     return this.http.delete<void>(url);
   }
